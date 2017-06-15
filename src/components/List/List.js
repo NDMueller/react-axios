@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './List.css';
 
+import { dispatchGetList } from '../../services/listService';
+
 import Customer from './Customer/Customer';
 import CreateCustomer from './CreateCustomer/CreateCustomer';
 
 class List extends Component {
+  componentDidMount() {
+    dispatchGetList();
+  }
+
   render() {
     const {
       loading,
-      customerList
+      customerList,
     } = this.props;
     
     const CustomerComponents = customerList.map( customer => (
